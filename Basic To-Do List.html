@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)file:///C:/Users/dhaks/OneDrive/Desktop/To-Do.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <style>
+    h1{
+        text-align:center;
+    }
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .todo-list {
+      width: 300px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    .todo-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+    .todo-item button {
+      margin-left: 5px;
+    }
+  </style>
+</head>
+<body>
+    <h1><u>Basic to-do list</u></h1>
+    <h3>Using thisb to-do list we can make 'n' number of lists that have to be done.For example,we can have a grocery list which can be used to buy grocery in the departmental store.We can add n number of items using "Add" button and also we can remove those itenms using "Remove" button.</h3>
+  <div class="todo-list">
+    <input type="text" id="todo-input" placeholder="Enter your to-do item">
+    <button onclick="addTodo()">Add</button>
+    <div id="todo-items"></div>
+  </div>
+
+  <script>
+    function addTodo() {
+      const input = document.getElementById('todo-input');
+      const todoText = input.value.trim();
+
+      if (todoText !== '') {
+        const todoItems = document.getElementById('todo-items');
+
+        const todoItem = document.createElement('div');
+        todoItem.className = 'todo-item';
+
+        const text = document.createElement('span');
+        text.innerText = todoText;
+
+        const doneButton = document.createElement('button');
+        doneButton.innerText = 'Done';
+        doneButton.addEventListener('click', () => {
+          todoItem.classList.toggle('done');
+        });
+
+        const removeButton = document.createElement('button');
+        removeButton.innerText = 'Remove';
+        removeButton.addEventListener('click', () => {
+          todoItem.remove();
+        });
+
+        todoItem.appendChild(text);
+        todoItem.appendChild(doneButton);
+        todoItem.appendChild(removeButton);
+
+        todoItems.appendChild(todoItem);
+
+        input.value = '';
+      }
+    }
+  </script>
+
+
+</body></html>

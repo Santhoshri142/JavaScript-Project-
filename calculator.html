@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<!-- saved from url=(0055)file:///C:/Users/dhaks/OneDrive/Desktop/calculator.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Calculator</title>
+  <style>
+    h1{
+        text-align:center;
+    }
+    /* Optional: Basic styling for the calculator */
+    body {
+      font-family: Arial, sans-serif;
+      ext-align:center;
+    }
+    .calculator {
+      width: 220px;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    .input {
+      width: 100%;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    .result {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+    }
+    button {
+      padding: 10px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    
+  </style>
+</head>
+<body>
+    <h1><u>BASIC CALCULATOR</u></h1>
+    <h3>Using this basic calculator we can do a basic arithmetic operations.</h3>
+    <h4>Steps to achieve those arithmetic oprations are given below....</h4>
+    
+        <ul><li>We need two numbers or one operator to achieve arithmetic operations.</li>
+        <li>First click one number.</li>
+        <li>Click any operator.</li>
+        <li>Click a number to be added or multiplied with first number and to be subtracted or divided from the first number.</li>
+    <li>Finally the result will be displayed below the calculator.</li></ul>
+    
+  <div class="calculator">
+    <input type="text" id="display" class="input" readonly="">
+    <div class="buttons">
+      <button onclick="appendToDisplay(&#39;7&#39;)">7</button>
+      <button onclick="appendToDisplay(&#39;8&#39;)">8</button>
+      <button onclick="appendToDisplay(&#39;9&#39;)">9</button>
+      <button onclick="appendToDisplay(&#39;+&#39;)">+</button>
+      <button onclick="appendToDisplay(&#39;4&#39;)">4</button>
+      <button onclick="appendToDisplay(&#39;5&#39;)">5</button>
+      <button onclick="appendToDisplay(&#39;6&#39;)">6</button>
+      <button onclick="appendToDisplay(&#39;-&#39;)">-</button>
+      <button onclick="appendToDisplay(&#39;1&#39;)">1</button>
+      <button onclick="appendToDisplay(&#39;2&#39;)">2</button>
+      <button onclick="appendToDisplay(&#39;3&#39;)">3</button>
+      <button onclick="appendToDisplay(&#39;*&#39;)">*</button>
+      <button onclick="appendToDisplay(&#39;0&#39;)">0</button>
+      <button onclick="clearDisplay()">C</button>
+      <button onclick="calculateResult()">=</button>
+      <button onclick="appendToDisplay(&#39;/&#39;)">/</button>
+    </div>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    // Function to update the display
+    function appendToDisplay(value) {
+      document.getElementById('display').value += value;
+    }
+
+    // Function to clear the display
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+      document.getElementById('result').innerText = '';
+    }
+
+    // Function to calculate and show the result
+    function calculateResult() {
+      try {
+        const expression = document.getElementById('display').value;
+        const result = eval(expression);
+        document.getElementById('result').innerText = `Result: ${result}`;
+      } catch (error) {
+        document.getElementById('result').innerText = 'Invalid Expression';
+      }
+    }
+  </script>
+
+
+</body></html>
